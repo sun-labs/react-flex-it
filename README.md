@@ -13,16 +13,43 @@ npm install --save react-flex-it
 ## Usage
 
 ```jsx
-import React, { Component } from 'react'
+import Flex from 'react-flex-it'
 
-import MyComponent from 'react-flex-it'
-import 'react-flex-it/dist/index.css'
+const MainLayout = () =>
+  <Flex>
+    <Flex column></Flex>
+    <Flex n='3' column>
+      <Flex.header>
+        <h1>Title</h1>
+      <Flex.header>
+    </Flex>
+    <Flex column></Flex>
+  </Flex>
+```
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
-}
+### With styled-components
+
+```jsx
+import Flex from 'react-flex-it'
+import styled from 'styled-components'
+
+const BorderFlex = styled(Flex)`
+  border: 1px solid gray;
+`
+
+const MainLayout = () =>
+  <BorderFlex>
+    <Flex column></Flex>
+    <Flex n='3' column alignItems='center'>
+      <Flex.header>
+        <h1>Welcome, User</h1>
+      <Flex.header>
+      <Flex.main>
+
+      <Flex.main>
+    </Flex>
+    <Flex column></Flex>
+  </BorderFlex>
 ```
 
 ## License
