@@ -1,6 +1,6 @@
 export const parseProps = (props) => {
   const {
-    c, column: c2,
+    c, column: c2, col: c3,
     r, row: r2,
     n, flex: n2,
     h, height: h2,
@@ -22,7 +22,7 @@ export const parseProps = (props) => {
   const width = w || w2 || (auto ? 'unset' : '100%')
   const height = h || h2 || (auto ? 'unset' : '100%')
   const row = r || r2
-  const column = c || c2
+  const column = c || c2 || c3
 
   const style = {
     width,
