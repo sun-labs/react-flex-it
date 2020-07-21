@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Flex = (props) => {
+export const parseProps = (props) => {
   const {
     c, column: c2,
     r, row: r2,
@@ -14,7 +12,7 @@ const Flex = (props) => {
     auto,
     children,
     className,
-    style = {},
+    style: userStyle = {},
     ...rest
   } = props
 
@@ -26,25 +24,26 @@ const Flex = (props) => {
   const row = r || r2
   const column = c || c2
 
-  return React.createElement(
-    type,
-    {
-      className,
-      style: {
-        width,
-        height,
-        display,
-        flex,
-        flexDirection: (column && !row)
-          ? 'column'
-          : 'row',
-        alignItems,
-        justifyContent,
-        ...style
-      },
-      ...rest
-    },
-    children)
-}
+  const style = {
+    width,
+    height,
+    display,
+    flex,
+    flexDirection: (column && !row)
+      ? 'column'
+      : 'row',
+    alignItems,
+    justifyContent,
+    ...userStyle
+  }
 
-export default Flex
+  return {
+    type,
+    children,
+    props: {
+      className,
+      style,
+      ...rest
+    }
+  }
+}
